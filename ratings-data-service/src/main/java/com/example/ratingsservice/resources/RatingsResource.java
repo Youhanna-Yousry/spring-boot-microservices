@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("/ratings")
 public class RatingsResource {
 
+
     @RequestMapping("/{userId}")
     public UserRating getRatingsOfUser(@PathVariable String userId) {
         List<Rating> ratings = Arrays.asList(
