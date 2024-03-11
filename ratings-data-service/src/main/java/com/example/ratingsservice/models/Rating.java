@@ -1,24 +1,37 @@
 package com.example.ratingsservice.models;
 
-public class Rating {
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
-    private String movieId;
+@Entity
+@Table(name = "ratings")
+public class Rating {
+    @EmbeddedId
+    private RatingId id;
+
+    @Column(name = "rating")
+    @Min(1) @Max(5)
     private int rating;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private UserRating userId;
 
     public Rating() {
     }
 
-    public Rating(String movieId, int rating) {
-        this.movieId = movieId;
+    public Rating(String movieId, int rating, String userId) {
+        this.id = new RatingId(movieId, userId);
         this.rating = rating;
     }
 
-    public String getMovieId() {
-        return movieId;
+    public RatingId getId() {
+        return id;
     }
 
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
+    public void setId(RatingId id) {
+        this.id = id;
     }
 
     public int getRating() {
