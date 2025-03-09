@@ -1,4 +1,4 @@
-package com.example.ratingsservice.models;
+package com.example.trendingsservice.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;

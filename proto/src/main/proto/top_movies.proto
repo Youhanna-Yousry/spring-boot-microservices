@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package com.example;
+
+option java_multiple_files = true;
+
+message Movie {
+  int32 movieId = 1;
+  int32 movieRating = 2;
+}
+
+message TopRatedMoviesRequest {
+  int32 limit = 1;
+}
+
+message TopRatedMoviesResponse {
+  repeated Movie movies = 1;
+}
+
+service TopRatedMoviesService {
+  rpc getTopRatedMovies(TopRatedMoviesRequest) returns (TopRatedMoviesResponse) {}
+}
